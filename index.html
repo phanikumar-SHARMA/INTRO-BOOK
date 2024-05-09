@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INTRO-BOOK</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>    
+    <style>
+        body {
+            background: linear-gradient(to left, #9AFEFF 10%, #CCFFFF 30%, #E0FFFF 70%, #F0FFFF 100%);
+            color: black;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        fieldset {
+            border-radius: 10px;
+            border-color: blue;
+            border-style: solid;
+        }
+
+        legend {
+            font-family: cursive;
+            text-align: center;
+            color: #307D7E;
+        }
+
+        .radio-inline input[type="radio"] {
+            transform: scale(1.2);
+            margin-right: 5px;
+        }
+        label{
+            font-size:20px;
+        }
+        .resultant {
+            border: 2px solid #333;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            transition: background-color 0.5s ease;
+            background-color: #fff;
+            color:grey;
+        }
+        input {
+            text-align: center;
+        }
+
+       .avatar {
+            margin-right: 10px;
+            height: 200px;
+            width: auto;
+            border-radius:180px 0px 0px 180px;
+b           border-style:soid;
+b           border-color:aqua;
+        }
+        #imagePreview {
+            justify-content: right;
+            display: flex;
+            margin-right: 0px;
+        }
+
+        .personal {
+            margin-top: 20px;
+            text-align: left;
+        }
+       h2 {
+border-color: linear-gradient(to right, blue, lightblue, aqua, white); /* Linear gradient for border color */
+    
+    border-radius: 15px;
+    border: 2px outset;
+    color: black;
+    padding: 5px;
+    margin-bottom: 10px;
+    transition: border-color 0.5s; /* Apply transition for smooth color change */
+}
+
+h2:hover {
+    animation: rotateStar 5s ease-in-out infinite; /* Apply the animation */
+}
+
+@keyframes rotateStar {
+    0% {
+        border-color: blue; /* Initial border color */
+    }
+    30% {
+        border-color: lightblue; /* Change border color at 30% of the animation */
+    }
+    70% {
+        border-color: aqua; /* Change border color at 70% of the animation */
+    }
+    100% {
+        border-color: white; /* Final border color */
+    }
+}
+</style>
+</head>
+<body>
+<div class="container" ng-app="">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="inputdata">
+                <fieldset>
+                    <legend>INTRO-BOOK</legend>
+                    <div class="form-group">
+                        <label for="avatar">CHOOSE IMAGE:</label>
+                        <input type="file" class="form-control-file" id="avatar" accept="image/*" onchange="previewImage(event)">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">NAME:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name of the person" ng-model="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="proff">PROFESSION:</label>
+                        <input type="text" class="form-control" id="proff" placeholder="Profession of the person" ng-model="proff">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">AGE:</label>
+                        <input type="text" class="form-control" id="age" placeholder="Age of the person" ng-model="age">
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">DATE OF BIRTH:</label>
+                        <input type="date" class="form-control " id="dob" placeholder="Select Date of Birth" ng-model="dob">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">PHONE NUMBER:</label>
+                        <input type="tel" class="form-control" id="phno" placeholder="Mobile number of the person" ng-model="phno">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">MAIL ID:</label>
+                        <input type="email" class="form-control" id="mail" placeholder="Email ID of the person" ng-model="mail">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">GENDER:</label>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="gender" ng-model="gender" value="Male"> Male
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="gender" ng-model="gender" value="Female"> Female
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="gender" ng-model="gender" value="Prefer-not-to-say"> Prefer not to say
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fathername">Father's Name:</label>
+                        <input type="text" class="form-control" id="fathername" placeholder="Father's Name" ng-model="fathername">
+                    </div>
+                    <div class="form-group">
+                        <label for="mothername">Mother's Name:</label>
+                        <input type="text" class="form-control" id="mothername" placeholder="Mother's Name" ng-model="mothername">
+                    </div>
+                    <div class="form-group">
+                        <label for="prev_work">Previous Work Experience Description:</label>
+                        <textarea class="form-control" id="prev_work" rows="3" placeholder="Previous Work Experience Description" ng-model="prev_work"></textarea>
+                    </div>
+                     <div class="form-group">
+                        <label for="scl_exp">School education Description:</label>
+                        <textarea class="form-control" id="scl_exp" rows="5" placeholder="School education Description" ng-model="scl_exp"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="clg_exp">College education Description:</label>
+                        <textarea class="form-control" id="clg_exp" rows="5" placeholder="College education Description" ng-model="clg_exp"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mylike">What do you like?</label>
+                        <textarea class="form-control" id="prev_work" rows="5" placeholder="what do you like such as ex :- pets,birds,musical instruments,mobile_games etc.." ng-model="mylike"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mylikebe">What do you like to be and what do you now ?</label>
+                        <textarea class="form-control" id="prev_work" rows="5" placeholder="teacher ---> politician" ng-model="mylikebe"></textarea>
+                    </div>
+<div class="form-group">
+    <label for="interests">Interests:</label>
+    <textarea class="form-control" id="interests" rows="3" placeholder="Interests" ng-model="interests"></textarea>
+</div>
+<div class="form-group">
+    <label for="hobbies">Hobbies:</label>
+    <textarea class="form-control" id="hobbies" rows="3" placeholder="Hobbies" ng-model="hobbies"></textarea>
+</div>
+<div class="form-group">
+    <label for="goals">Goals:</label>
+    <textarea class="form-control" id="goals" rows="3" placeholder="Goals" ng-model="goals"></textarea>
+</div>
+<div class="form-group">
+    <label for="relations">Relations:</label>
+    <textarea class="form-control" id="relations" rows="3" placeholder="Relations" ng-model="relations"></textarea>
+</div>
+<div class="form-group">
+    <label for="bloodgroup">Blood Group:</label>
+    <input type="text" class="form-control" id="bloodgroup" placeholder="Blood Group" ng-model="bloodgroup">
+</div>
+<!-- Add additional fields here -->
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="resultant" id="resultant">
+        <h1 align="center" style="font-family: serif;"> {{ name | uppercase }}'S INTRO-BOOK</h1>
+        <div id="imagePreview" class="text-center">
+            <img id="avatarPreview" class="avatar" src="#" alt="Avatar Preview">
+        </div>
+        <div class="personal">
+            <h2 align="center">Personal details</h2>
+            <h4>Name : {{name}}</h4>
+            <b>Age : {{age}}</b><br>
+            <b>Father's Name: {{fathername}}</b><br>
+            <b>Mother's Name: {{mothername}}</b><br>
+            <b>Date of Birth : {{dob}}</b><br>
+            <b>Gender : {{gender}}</b><br>
+            <h2 align="center">EDU & JOB details</h2>
+            <b>Previous Work Experience: {{prev_work}}</b><br>
+            <b>School Experience: {{scl_exp}}</b><br>
+            <b>College Experience: {{clg_exp}}</b><br>
+            <h2 align="center">Others</h2>
+            <b>Interests: {{interests}}</b><br>
+            <b>Hobbies: {{hobbies}}</b><br>
+            <b>Goals: {{goals}}</b><br>
+            <b>Relations: {{relations}}</b><br>
+            <b>Blood Group: {{bloodgroup}}</b><br>
+            <h2 align="center">Here's what I like</h2>
+            <b>Here's what I like : {{mylike}}</b><br>
+            <b>I like to be : {{mylikebe}} is my proffession now </b><br>
+        </div>
+        <button class="btn btn-info mt-3" id="bg">CHANGE BG</button>
+        <button class="btn btn-info mt-3" id="printBtn">PRINT</button>
+   
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Function to preview selected image and set it as background
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('avatarPreview');
+            output.src = reader.result;
+
+            // Set the background image of the resultant container
+            var resultant = document.getElementById('resultant');
+            resultant.style.backgroundImage = "url('" + reader.result + "')";
+            resultant.style.backgroundSize = "inline";
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    // Function to change background color
+    $("#bg").click(function() {
+        var op = document.getElementById('resultant');
+        var CA = ['#A0D6B4', '#FAFAFA', '#F5F5F5', '#FFFFC2', '#FFFFCC', '#FFFDD0', '#FAFAD2', '#FFFFE0', '#F5F5DC', '#F2F0DF', '#FFF8DC', '#FBF6D9'];
+        var randomIndex = Math.floor(Math.random() * CA.length);
+        var back = CA[randomIndex];
+        op.style.backgroundColor = back;
+        });
+       document.getElementById('printBtn').addEventListener('click', function() {
+        var printContents = document.getElementById('resultant').innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    });
+</script>
+
+</body>
+</html>
